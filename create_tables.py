@@ -82,26 +82,15 @@ cursor.execute(create_outcome_table_query)
 
 create_main_table_query = ("""CREATE TABLE animals_main
   (id INTEGER PRIMARY KEY AUTOINCREMENT,
-  animal_main_id VARCHAR (10) NOT NULL, 
+  animal_main_id INTEGER NOT NULL, 
   outcome_main_id INTEGER NOT NULL,
 
-  FOREIGN KEY (animal_main_id) REFERENCES animals_by_id(animal_id) ON DELETE CASCADE,
+  FOREIGN KEY (animal_main_id) REFERENCES animals_by_id(id) ON DELETE CASCADE,
   FOREIGN KEY (outcome_main_id) REFERENCES outcome_by_id(outcome_id) ON DELETE CASCADE 
   )
   """)
 
 cursor.execute(create_main_table_query)
 
-create_connect_table_query = ("""
-CREATE TABLE connect_animals_outcomes
-(animals_id INTEGER ,
-outcomes_id INTEGER ,
-PRIMARY KEY (animals_id, outcomes_id),
-FOREIGN KEY (animals_id) REFERENCES animal_by_id(id),
-FOREIGN KEY (outcomes_id) REFERENCES outcome_by_id(outcome_id)
-);
-""")
-
-cursor.execute(create_connect_table_query)
 
 cursor.close()
