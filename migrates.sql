@@ -69,13 +69,14 @@ FROM animals
          LEFT JOIN outcome_types
                    ON outcome_types.type = animals.outcome_type;
 
-INSERT INTO animals_main (animal_main_id)
+INSERT INTO animals_main (animal_main_id, outcome_main_id)
 
-SELECT animals_by_id.animal_id as animal_main_id
-FROM animals_by_id;
+SELECT animals_by_id.animal_id  as animal_main_id,
+       outcome_by_id.outcome_id as outcome_main_id
+FROM animals_by_id,
+     outcome_by_id
+         LEFT JOIN connect_animals_outcomes
+                   ON animals_by_id.id = connect_animals_outcomes.animals_id
+         INNER JOIN outcome_by_id
+                    ON connect_animals_outcomes.outcomes_id = outcome_by_id.outcome_id;
 
-
-INSERT INTO animals_main (outcome_main_id)
-
-SELECT outcome_by_id.outcome_id as outcome_main_id
-FROM outcome_by_id;

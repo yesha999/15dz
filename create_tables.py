@@ -91,3 +91,17 @@ create_main_table_query = ("""CREATE TABLE animals_main
   """)
 
 cursor.execute(create_main_table_query)
+
+create_connect_table_query = ("""
+CREATE TABLE connect_animals_outcomes
+(animals_id INTEGER ,
+outcomes_id INTEGER ,
+PRIMARY KEY (animals_id, outcomes_id),
+FOREIGN KEY (animals_id) REFERENCES animal_by_id(id),
+FOREIGN KEY (outcomes_id) REFERENCES outcome_by_id(outcome_id)
+);
+""")
+
+cursor.execute(create_connect_table_query)
+
+cursor.close()
