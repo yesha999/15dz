@@ -7,10 +7,10 @@ SELECT DISTINCT breed
 FROM animals;
 
 INSERT INTO colors (color)
-SELECT DISTINCT TRIM(color1) as color
+SELECT DISTINCT TRIM(color1) as color_name
 FROM animals
 UNION
-SELECT DISTINCT TRIM(color2) as color
+SELECT DISTINCT TRIM(color2) as color_name
 FROM animals
 WHERE color2 IS NOT NULL;
 
@@ -40,8 +40,8 @@ SELECT animal_id,
        animal_types.id  as animal_type_id,
        name,
        animal_breeds.id as breed_id,
-       animal_color1.id as color1_id,
-       animal_color2.id as color2_id,
+       animal_color1.id as color_1_id,
+       animal_color2.id as color_2_id,
        date_of_birth
 FROM animals
          LEFT JOIN animal_types

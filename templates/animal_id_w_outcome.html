@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Животное №{{row[1]}}</h2>
+<p>{{row[2]}} породы {{row[4]}}</p>
+{% if row[3] != None %}
+<p>Имя: {{row[3]}}</p>
+{% endif %}
+<p>Цвет {{row[5]}}</p>
+{% if row[6] != None %}
+<p>Дополнительный цвет {{row[6]}}</p>
+{% endif %}
+<p>Дата рождения {{row[7][:10]}}</p>
+ <h2>Информация о прибытии</h2>
+<p>Прибыл в {{row[-2]}} месяце {{row[-1]}} года</p>
+<p>Программа: {{row[-3]}}</p>
+<p>Подпрограмма {{row[-4]}}</p>
+</body>
+</html>
